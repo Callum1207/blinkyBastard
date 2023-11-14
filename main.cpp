@@ -7,16 +7,19 @@
 
 
 // Blinking rate in milliseconds
-#define BLINKING_RATE     75ms
+#define BLINKING_RATE       100ms
+#define BLINKING_RATE2      750ms
 
 
 int main()
 {
     // Initialise the digital pin LED1 as an output
     DigitalOut led(LED1);
+    DigitalIn btn(BUTTON1);
 
     while (true) {
         led = !led;
         ThisThread::sleep_for(BLINKING_RATE);
+        if (btn == true) ThisThread::sleep_for(BLINKING_RATE2);
     }
 }
